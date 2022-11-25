@@ -191,7 +191,7 @@ Cette fonction get_prefs est appelée dans **/admin_panel/index.php** lorsque le
 
 <img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-26.png">
 
-On retourne donc sur Curlify pour surcharger toutes les variables nécéssaires à savoir _SERVER[HTTP_ACCEPT_LANGUAGE] (prefs) & \$DEFAULT_LANGUAGE (lang)
+On retourne donc sur Curlify pour surcharger toutes les variables nécéssaires à savoir $_SERVER[HTTP_ACCEPT_LANGUAGE] (prefs) & \$DEFAULT_LANGUAGE (lang)
 
 Voici la payload finale : 
 
