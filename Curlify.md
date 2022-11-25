@@ -90,7 +90,7 @@ Après avoir modifié notre user agent pour correspondre au format "DGHACK/1.0 (
 
 <img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-12.png">
 
-En analysant le code l'équipe de développement a fait le choix d'utiliser la fonction PHP extract() pour récupérer les paramètres envoyés par l'utilisateur dans l'URL. 
+En analysant le code l'équipe de développement a fait le choix d'utiliser la fonction PHP extract() pour récupérer les paramètres envoyés par l'utilisateur. 
 
 <img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-13.png">
 
