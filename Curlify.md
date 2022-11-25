@@ -13,7 +13,7 @@ Dans le cadre d'un programme de bug bounty nous devons auditer l'application **C
 L'objectif du challenge est de lire le flag se trouvant dans le fichier flag.php 
 ```
 
-En premier lieu on peut deviner grâce à son appellation que l'application utilise l'interface en ligne de commande cURL qui permet notamment de récupérer le contenu d'une ressource en y indiquant son URL.
+En premier lieu on peut deviner grâce à son appellation que l'application utilise cURL qui permet notamment de récupérer le contenu d'une ressource en y indiquant son URL.
 
 
 ## Curlify
