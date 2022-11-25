@@ -209,8 +209,8 @@ Puisqu'il faut maintenant créer un ticket qui une fois généré incluera nos p
 
 <img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-28.png">
 
-La description du challenge indiquait 
-``` La DSI nous indique que les administrateurs sont très réactifs dans le traitement des tickets``` 
+La description du challenge indiquait :
+``` La DSI nous indique que les administrateurs sont très réactifs dans le traitement des tickets```. 
 On comprend alors pourquoi car effectivement 5 secondes pour traiter un ticket c'est vraiment rapide..
 
 Le ticket généré est consultable via Curlify à l'adresse **/admin_panel/tasks/task_9532.txt** et est automatiquement supprimé au bout de quelques secondes. 
