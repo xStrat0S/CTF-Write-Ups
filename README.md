@@ -1,6 +1,6 @@
 ## CTF Writeups
 
-Write ups des challenges les plus intéressants rencontrés en Capture The Flag
+Write ups des challenges les plus intéressants complétés en Capture The Flag
 
 ### 2022 
 
