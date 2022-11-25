@@ -12,8 +12,8 @@ Classement lors des derniers événements
 
 ### 2022
 
-- DGHACK (Top 6% Students / Top 10% Global)
-- ECW (Top 25% Students / Top 22 Global)
+- DGHACK [Top 6% Students / Top 10% Global]
+- ECW _Pre-Qualif_ [Top 25% Students / Top 22 Global]
 
 ## About me
 
