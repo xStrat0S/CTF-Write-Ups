@@ -1,8 +1,9 @@
 <img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-00.png">
 
 ### DGHACK CTF
+
 Novembre 2022 
-*Challenge Web*
+Challenge Web
 
 
 ## Introduction 
