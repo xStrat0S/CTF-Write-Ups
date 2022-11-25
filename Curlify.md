@@ -38,7 +38,7 @@ Malheureusement la page **/dev.php** nous retourne un message d'erreur nous indi
 
 On se retrouve avec une application Curl qui serait non fonctionnelle et une page /dev.php inaccessible de l'extérieur...
 
-**Et si il était possible de demander à Curlify de récupérer une page locale et non web ?**
+**Et si il était possible de demander à Curlify de nous récupérer une page en local et non sur le web ?**
 
 <img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-04.png">
 
