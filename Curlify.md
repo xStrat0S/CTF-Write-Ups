@@ -2,8 +2,7 @@
 
 ### DGHACK CTF
 
-Novembre 2022 
-Challenge Web
+Novembre 2022 - Challenge Web
 
 
 ## Introduction 
@@ -17,14 +16,13 @@ L'objectif du challenge est de lire le flag se trouvant dans le fichier flag.php
 En premier lieu on peut deviner grâce à son appellation que l'application utilise l'interface en ligne de commande cURL qui permet notamment de récupérer le contenu d'une ressource en y indiquant son URL.
 
 
-
 ## Curlify
 
 L'application se résume en une simple page contenant un formulaire et un bouton "Curl it !"
 
 <img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-01.png">
 
-Après de nombreuses essais, peu importe l'adresse renseignée l'application nous retourne *Not Implemented Yet*. Aucune adresse web ni aucun paramètre cURL n'est pris en compte. Tout cela pouvant nous laisser croire que l'application n'est pas du tout fonctionnelle. 
+Après de nombreux essais, peu importe l'adresse renseignée l'application nous retourne *Not Implemented Yet*. Aucune adresse web ni aucun paramètre cURL n'est pris en compte. Tout cela pouvant nous laisser croire que l'application n'est pas du tout fonctionnelle. 
 
 
 
@@ -38,21 +36,20 @@ Malheureusement la page **/dev.php** nous retourne un message d'erreur nous indi
 
 <img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-03.png">
 
-On se retrouve avec une application Curl qui serait non fonctionnelle et une page /dev inacessible...
+On se retrouve avec une application Curl qui serait non fonctionnelle et une page /dev.php inaccessible...
 
 **Et si il était possible de demander à Curlify de récupérer une page locale et non web ?**
-
 
 <img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-04.png">
 
 Bingo ! 
-On arrive obtenir le contenu de la page /dev.php nous avons donc affaire à une faille **SSRF** 
 
+On arrive obtenir le contenu de la page /dev.php nous avons donc affaire à une faille **SSRF** 
 
 
 ## admin_panel
 
-L'adresse **/536707b92** nous permet de télécharger une archive zip du code source de ce qui semblerait être une autre application disponible à l'adresse **/admin_panel/
+L'adresse **/536707b92** nous permet de télécharger une archive zip du code source de ce qui semblerait être une autre application disponible à l'adresse **/admin_panel/**
 
 **admin_panel/index.php**
 
@@ -68,33 +65,32 @@ Et **admin_panel/task.php**
 
 <img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-07.png">
 
-Dans le backup du code source on peut remarquer le fameux fichier **flag.php** présent dans le dossier user_prefs qui une fois interpreté par le serveur fera apparaître le flag pour valider le challenge. 
+Dans le backup du code source on peut remarquer le fameux fichier **flag.php** présent dans le dossier user_prefs qui devra être interpreté par le serveur pour faire apparaître le flag et valider le challenge. 
 
 <img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-08.png">
 
-Il faudra donc probablement ***include*** ce fichier avec une LFI d'une manière ou d'une autre pour faire apparaître le flag. 
-
+Il faudra donc ***include*** ce fichier via une LFI d'une manière ou d'une autre. 
 
 
 ## Exploiter le code
 
-On a pu voir auparavant comment bypass le message d'erreur **Internal Access Only** en utilisant Curlify pour obtenir le code source de la page en local donc on recommence pour **admin_panel/index.php** : 
+On a pu voir auparavant comment bypass le message d'erreur **Internal Access Only** en utilisant Curlify pour obtenir le code source de la page en local, on recommence pour **admin_panel/index.php** : 
 
 <img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-09.png">
 
-Mais on est bloqué par un WAF homemade, on va donc analyser le code source du fichier **index.php** (que j'ai commenté) pour bypass ce message d'erreur. 
+Mais on est bloqué par un "WAF" probablement homemade, on va donc analyser le code source du fichier **index.php** (que j'ai commenté) pour bypass ce message d'erreur. 
 
 <img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-10.png">
 
-La première sécurité est déjà bypass grâce à curlify mais la seconde sera exploitable dans le fichier firewall.php dont le code est présent ci-dessous.
+La première sécurité est déjà bypass grâce à curlify mais la seconde sera exploitable dans le fichier **firewall.php** dont le code est présent ci-dessous.
 
 <img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-11.png">
 
-Après avoir modifié notre user agent pour correspondre au format "DGHACK/1.0 (Curlify)" requis par le WAF nous voici bloqués une étape plus loin dans l'exploitation de l'application. 
+Après avoir modifié notre user agent pour correspondre au format "DGHACK/1.0 (Curlify)" requis par le WAF nous voici stoppés une étape plus loin dans l'exploitation de l'application. 
 
 <img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-12.png">
 
-Par la suite l'équipe de développement à choisi d'utiliser la fonction PHP extract() pour récupérer les paramètres envoyés par l'utilisateur dans l'URL. 
+En analysant le code l'équipe de développement a fait le choix d'utiliser la fonction PHP extract() pour récupérer les paramètres envoyés par l'utilisateur dans l'URL. 
 
 <img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-13.png">
 
@@ -124,7 +120,7 @@ Après une longue recherche, il est possible d'exploiter la fonction extract($\_
 127.0.0.1/admin_panel/index.php?_POST[username]=admin
 ```
 
-Cet exploit nous permettra de surcharger toutes les variables nécéssaires pour obtenir le flag. 
+Cet exploit nous permettra de surcharger toutes les variables nécessaires pour obtenir le flag. 
 
 
 
@@ -160,9 +156,9 @@ Résultat :
 
 ### Ticketting 
 
-C'est bien beau une fois qu'on reconnu comme admin mais qu'est-ce qu'on peut faire maintenant ? 
+C'est bien beau on est reconnu comme admin mais qu'est-ce qu'on peut faire maintenant ? 
 
-Et bien après avoir bypass la vérification du cookie **remember_me**, le serveur a créé une variable de session côté serveur nommée $\_SESSION["is_connected"]  = true & $\_SESSION["username"] = admin. 
+Et bien après avoir bypass la vérification du cookie **remember_me**, le serveur a créé une variable de session (côté serveur) nommée $\_SESSION["is_connected"]  = true & $\_SESSION["username"] = admin. 
 
 Ce qui va nous être utile pour la suite du challenge puisque sur la page **task.php** on vérifie qu'une de ces deux variables serveur est bien présente. 
 
@@ -177,7 +173,7 @@ A la lecture du code source :
 <img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-22.png">
 <img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-23.png">
 
-L'application s'attend à ce que l'auteur et *l'assignee* soit un username présent dans la base de données, le type d'incident pourra être par exemple **bug** et la description est libre. 
+L'application s'attend à ce que l'auteur et *l'assignee* soit un username présent dans la base de données, le type d'incident pourra être par exemple "**bug**" et la description est libre. 
 
 <img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-24.png">
 
@@ -203,23 +199,25 @@ Voici la payload finale :
 127.0.0.1/admin_panel/index.php?_POST[username]=admin&_COOKIE[remember_me]=admin7a988e11680f9e151f6f46808690d5ca&_SESSION[userid]=1&_SERVER[HTTP_ACCEPT_LANGUAGE]=n0ne&DEFAULT_LANGUAGE=flag.php
 ```
 
+## Attraper le pompon
 
 Mais ce n'est pas terminé ! 
 
 Puisqu'il faut maintenant créer un ticket qui une fois généré incluera nos préférences à savoir le fichier **flag.php**
 
-![[curly27.png]]
+<img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-curly27.png">
 
 <img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-28.png">
 
-La description du challenge indiquait "La DSI nous indique que les administrateurs sont très réactifs dans le traitement des tickets", on comprend alors pourquoi car effectivement 5 secondes pour traiter un ticket c'est vraiment rapide..
+La description du challenge indiquait 
+``` La DSI nous indique que les administrateurs sont très réactifs dans le traitement des tickets``` 
+On comprend alors pourquoi car effectivement 5 secondes pour traiter un ticket c'est vraiment rapide..
 
 Le ticket généré est consultable via Curlify à l'adresse **/admin_panel/tasks/task_9532.txt** et est automatiquement supprimé au bout de quelques secondes. 
 
 Son id étant aléatoire sur 4 digits il faut être rapide pour l'attraper. 
 
 Afin d'obtenir le précieux graal deux choix sont possibles, être assez fast pour afficher le ticket avant sa suppression ou créer un script permettant à coup sûr de l'obtenir... 
-
 
 
 ## Graal 
