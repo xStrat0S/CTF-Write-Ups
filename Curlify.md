@@ -44,7 +44,7 @@ On se retrouve avec une application Curl qui serait non fonctionnelle et une pag
 
 Bingo ! 
 
-On arrive obtenir le contenu de la page /dev.php nous avons donc affaire à une faille **SSRF** 
+On arrive obtenir le contenu de la page /dev.php grâce à une faille **SSRF** 
 
 
 ## admin_panel
