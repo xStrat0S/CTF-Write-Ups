@@ -1,8 +1,7 @@
-#CTF-Write-Ups
+# CTF-Write-Ups
 
-Repository composé des Write ups de challenge finalisés lors de CTF
-Seulement ceux qui sont intéréssant seront listés ici
+Write ups de challenges intéressants et terminés lors de d'événements Capture The Flag
 
-##2022 
+## 2022 
 
-- Curlify (DGHACK)
+- <a href="https://github.com/xStrat0S/CTF-Write-Ups/blob/main/Curlify.md">Curlify (Web - DGHACK)</a>
