@@ -1,4 +1,4 @@
-## CTF Write ups
+## CTF Writeups
 
 Write ups des challenges les plus intéressants rencontrés en Capture The Flag
 
