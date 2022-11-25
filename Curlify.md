@@ -205,7 +205,7 @@ Mais ce n'est pas terminé !
 
 Puisqu'il faut maintenant créer un ticket qui une fois généré incluera nos préférences à savoir le fichier **flag.php**
 
-<img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-curly27.png">
+<img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-27.png">
 
 <img src="https://raw.githubusercontent.com/xStrat0S/CTF-Write-Ups/main/img/curlify/curly-28.png">
 
