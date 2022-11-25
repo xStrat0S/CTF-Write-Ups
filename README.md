@@ -1,6 +1,6 @@
-## CTF-Write-Ups
+## CTF Write ups
 
-Write ups des challenges les plus intéressants complétés lors d'événements Capture The Flag
+Write ups des challenges les plus intéressants rencontrés en Capture The Flag
 
 ### 2022 
 
@@ -8,8 +8,16 @@ Write ups des challenges les plus intéressants complétés lors d'événements 
 
 ## Personal CTF stats
 
+Classement lors des derniers événements
+
 ### 2022
 
-- DGHACK (Top 6% Students / Top 10% Global)
+- DGHACK (Top 6% Students / Top 10% Glo- Location : BZH bal)
 - ECW (Top 25% Students / Top 22 Global)
 
+## About me
+
+- Cyber Security Student  
+- Location : BZH 
+- School : ESNA 
+- https://www.root-me.org/Strat0S
