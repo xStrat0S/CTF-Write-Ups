@@ -21,3 +21,4 @@ Classement lors des derniers événements
 - Location : BZH 
 - School : ESNA 
 - https://www.root-me.org/Strat0S
+- https://bit.ly/CodingameStrat0S
