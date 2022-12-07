@@ -15,7 +15,7 @@ Classement lors des derniers événements
 - ECW _Pre-Qualif_ [Top 25% Students / Top 22% Global]
 - DGHACK [Top 6% Students / Top 10% Global]
 
-## About me
+## Whoami
 
 - Cyber Security Student  
 - Location : BZH 
