@@ -4,7 +4,7 @@ Write ups des challenges les plus intéressants complétés en Capture The Flag
 
 ### 2022 
 
-- <a href="https://github.com/xStrat0S/CTF-Write-Ups/blob/main/Curlify.md">Curlify (Web - DGHACK)</a>
+- <a href="https://github.com/xStrat0S/CTF-Write-Ups/blob/main/challenges/2022/DGhAck/Curlify.md">Curlify (Web - DGHACK)</a>
 
 ## Personal CTF stats
 
